@@ -1,6 +1,5 @@
 import "reflect-metadata";
 require("dotenv").config();
-console.log(process.env.DB_HOST);
 import { ApolloServer } from "apollo-server";
 import datasource from "./services/datasource";
 import { buildSchema } from "type-graphql";

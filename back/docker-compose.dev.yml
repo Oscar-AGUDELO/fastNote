@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  api:
+    # image: api
+    build: ./
+    ports:
+      - 5897:5897
+    volumes:
+      - ./src:/app/src
+    environment:
+      - DB_HOST=db
+      - TOKEN_PASS=TopitoToken7.
+      - DB_PASS=TopitoDb7.
+      - DB_NAME=fastNoteDb
+    command: npm run local-dev
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: fastNoteDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: TopitoDb7.
+    #volumes:
+    #  - /var/lib/postgresql/data
