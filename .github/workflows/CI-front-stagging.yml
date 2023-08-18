@@ -25,5 +25,5 @@ jobs:
         with:
           push: true
           tags: front:stagging
-          context: ./front
-          file: ./front/Dockerfile
+          context: ../../front
+          file: ../../front/Dockerfile
