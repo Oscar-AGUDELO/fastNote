@@ -26,4 +26,4 @@ jobs:
           context: "{{defaultContext}}:front"
           file: ./Dockerfile
           push: true
-          tags: oscaragudelo/fastNote-front:prod
+          tags: oscaragudelo/fastnote-front:prod
