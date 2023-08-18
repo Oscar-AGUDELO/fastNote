@@ -1,4 +1,4 @@
-name: client-prod
+name: front-prod
 
 on:
   push:
