@@ -1,2 +1,2 @@
 # fastNote
-My final school project "fastNote"
+My final school project "fastNote". 

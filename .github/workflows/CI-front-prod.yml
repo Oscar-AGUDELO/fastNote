@@ -1,4 +1,4 @@
-name: client-prod
+name: front-prod
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          context: "{{defaultContext}}:front"
+          file: ./Dockerfile
           push: true
-          tags: front:prod
-          context: ./front
-          file: ./front/Dockerfile
+          tags: oscaragudelo/fastnote-front:prod

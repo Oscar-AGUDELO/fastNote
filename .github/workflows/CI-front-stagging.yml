@@ -1,4 +1,4 @@
-name: client-dev
+name: front-dev
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          context: "{{defaultContext}}:front"
+          file: ./Dockerfile
           push: true
-          tags: front:stagging
-          context: ./front
-          file: ./front/Dockerfile
+          tags: oscaragudelo/fastnote-front:dev
