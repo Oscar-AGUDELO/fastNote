@@ -7,7 +7,7 @@ import { authChecker } from "./services/auth";
 import { UserResolver } from "./resolvers/userResolver";
 import { NoteResolver } from "./resolvers/noteResolver";
 
-const PORT = 5897;
+const PORT = 5000;
 
 async function bootstrap(): Promise<void> {
   const schema = await buildSchema({

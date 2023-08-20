@@ -9,10 +9,6 @@ RUN npm i
 COPY src src
 COPY tsconfig.json tsconfig.json
 COPY nodemon.json nodemon.json
-# COPY tests tests
-# COPY jest.config.js jest.config.js
-
-# RUN tsc
 
 CMD npm start
 

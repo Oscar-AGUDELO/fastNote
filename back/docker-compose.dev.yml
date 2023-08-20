@@ -5,7 +5,7 @@ services:
     # image: api
     build: ./
     ports:
-      - 5897:5897
+      - 5000:5000
     volumes:
       - ./src:/app/src
     environment:
