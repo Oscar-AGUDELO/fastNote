@@ -2,9 +2,11 @@ version: "3"
 
 services:
   api:
-    image: oscaragudelo/fastnote-back:dev
+    build: ./
     ports:
       - 5000:5000
+    volumes:
+      - ./src:/app/src
     environment:
       - DB_HOST=db
       - TOKEN_PASS=TopitoToken7.

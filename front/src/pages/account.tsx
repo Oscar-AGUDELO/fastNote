@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
-import { signin } from "../graphql/gql";
+import { createUser, signin } from "../graphql/gql";
 import { useMutation } from "@apollo/client";
 import { DATAContext } from "../DATAContexts";
 import eye from "../assets/images/oeil.png";
 
 export const Account = () => {
   const { refetchUser } = useContext(DATAContext);
+  const [view, setView] = useState(true); // true = login, false = signup
 
   const onTokenChange = async (token: string) => {
     if (token) {
@@ -17,7 +18,7 @@ export const Account = () => {
   const [email, setEmail] = useState("oscar.agudelo.pro@gmail.com");
   const [password, setPassword] = useState("23042015");
 
-  const [doLoginMutation, { loading }] = useMutation(signin);
+  const [doLoginMutation] = useMutation(signin);
   async function doLogin(event: { preventDefault: () => void }) {
     event.preventDefault();
     try {
@@ -36,19 +37,41 @@ export const Account = () => {
         setPassword("");
       }
     } catch {
-      null;
+      console.log("catch");
+    }
+  }
+
+  const [doSignupMutation] = useMutation(createUser);
+  async function doSignup(event: { preventDefault: () => void }) {
+    event.preventDefault();
+    try {
+      const { data } = await doSignupMutation({
+        variables: {
+          data: {
+            email: email,
+            password: password,
+          },
+        },
+      });
+      if (data.createUser) {
+        await onTokenChange(data.createUser);
+      } else {
+        setEmail("");
+        setPassword("");
+      }
+    } catch {
+      console.log("catch");
     }
   }
 
   return (
     <div>
-      <h1>Account</h1>
+      <h1>{view ? "Login" : "Signup"}</h1>
       <div className="loginContainer">
-        <form onSubmit={doLogin} className="loginForm">
+        <form onSubmit={view ? doLogin : doSignup} className="loginForm">
           <p>E-mail*</p>
           <input
             className="loginFormField"
-            disabled={loading}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -57,7 +80,6 @@ export const Account = () => {
           <div className="loginFormPasswordContainer">
             <input
               className="loginFormField"
-              disabled={loading}
               type={seePassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -74,11 +96,18 @@ export const Account = () => {
             <input
               className="loginFormSubmit"
               type="submit"
-              disabled={loading}
-              value="Envoyer"
+              value={view ? "Se connecter" : "Créer mon compte"}
             />
           </div>
         </form>
+        <div>
+          <p>Pas encore de compte ?</p>
+          {view ? (
+            <button onClick={() => setView(false)}>S'inscrire</button>
+          ) : (
+            <button onClick={() => setView(true)}>Se Connecter</button>
+          )}
+        </div>
       </div>
     </div>
   );

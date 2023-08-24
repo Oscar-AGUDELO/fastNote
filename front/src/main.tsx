@@ -15,11 +15,11 @@ import { DATAProvider } from "./DATAContexts.tsx";
 const createUrl = () => {
   let URI;
   if (window.location.href.includes("dev.fastnote")) {
-    URI = "https://graphql.dev.fastnote.oscardev.fr/";
+    URI = "https://api.dev.fastnote.website/";
   } else if (window.location.href.includes("prod.fastnote")) {
-    URI = "https://graphql.prod.fastnote.oscardev.fr/";
+    URI = "https://api.prod.fastnote.website/";
   } else {
-    URI = "http://localhost:5897";
+    URI = "http://localhost:5000";
   }
   return URI;
 };

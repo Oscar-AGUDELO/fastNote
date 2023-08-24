@@ -13,6 +13,6 @@ COPY .eslintrc.cjs .eslintrc.cjs
 COPY tsconfig.node.json tsconfig.node.json
 COPY tsconfig.json tsconfig.json
 
-EXPOSE 5173
+EXPOSE 3000
 
 CMD ["npm", "run", "local-dev"]
