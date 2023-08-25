@@ -14,13 +14,16 @@ import { DATAProvider } from "./DATAContexts.tsx";
 
 const createUrl = () => {
   let URI;
+  console.log(window.location.href)
   if (window.location.href.includes("dev.fastnote")) {
     URI = "https://api.dev.fastnote.website/";
-  } else if (window.location.href.includes("prod.fastnote")) {
-    URI = "https://api.prod.fastnote.website/";
-  } else {
+  } else if (window.location.href.includes("localhost")) {
     URI = "http://localhost:5000";
+  } else if (!window.location.href.includes("dev.fastnote")
+    && !window.location.href.includes("localhost")) {
+    URI = "https://api.prod.fastnote.website/";
   }
+  console.log(URI)
   return URI;
 };
 

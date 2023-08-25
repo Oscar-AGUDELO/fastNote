@@ -85,7 +85,6 @@ export class NoteResolver {
       const note = await datasource
         .getRepository(Note)
         .findOne({ where: { id }, relations: ["user"] });
-      console.log(note);
       if (note && note.id) {
         if (context.user.id === note.user.id) {
           const noteDeleted = await datasource.getRepository(Note).save({

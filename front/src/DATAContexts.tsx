@@ -52,7 +52,6 @@ export const DATAProvider: React.FunctionComponent<IDATAProvider> = ({
     fetchPolicy: "network-only",
     errorPolicy: "ignore",
   });
-  console.log(getUser);
   useEffect(() => {
     if (getUser.error) {
       setUser(null);
@@ -68,7 +67,6 @@ export const DATAProvider: React.FunctionComponent<IDATAProvider> = ({
       setUser(null);
     }
   }, [getUser.data]);
-  console.log(user);
   const refetchUser = () => {
     getUser.refetch();
   };
