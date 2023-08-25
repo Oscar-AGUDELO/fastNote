@@ -29,7 +29,6 @@ useEffect(() => {
         },
       });
       if (data) {
-        console.log(data);
         navigate(`/note/${data.createNote.id}`);
       } else {
         setform({
