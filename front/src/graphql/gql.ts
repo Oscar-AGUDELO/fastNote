@@ -49,7 +49,7 @@ export const oneNote = gql`
 `;
 
 export const createUser = gql`
-  mutation CreateUser($data: UserInput!) {
+  mutation CreateUser($data: UserSignin!) {
     createUser(data: $data)
   }
 `;

@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "local-dev": "nodemon",
+    "dev": "nodemon",
     "start": "ts-node src/index.ts",
-    "dev": "docker compose -f docker-compose.dev.yml up --build"
+    "docker-dev": "docker compose -f docker-compose.local.yml up --build"
   },
   "keywords": [],
   "author": "",

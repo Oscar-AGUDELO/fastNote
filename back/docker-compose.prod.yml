@@ -5,8 +5,6 @@ services:
     image: oscaragudelo/fastnote-back:prod
     ports:
       - 5000:5000
-    volumes:
-      - ./src:/app/src
     environment:
       - DB_HOST=db
       - TOKEN_PASS=TopitoToken7.
@@ -18,5 +16,3 @@ services:
       POSTGRES_DB: fastNoteDb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: TopitoDb7.
-    #volumes:
-    #  - /var/lib/postgresql/data
