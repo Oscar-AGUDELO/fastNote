@@ -29,4 +29,4 @@ jobs:
           context: "{{defaultContext}}:back"
           file: ./Dockerfile
           push: true
-          tags: oscaragudelo/fastnote-back:prod
+          tags: oscaragudelo/fastnote-back
