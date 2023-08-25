@@ -29,6 +29,6 @@ jobs:
           tags: oscaragudelo/fastnote-front:dev
       - name: auto_deploy
         if: ${{ success() }}
-        uses: distributhor/workflow-webhook
+        uses: joelwmale/webhook-action@2.1.0
         with:
           url: "https://ops.fastnote.website/hooks/autodeploydev"
