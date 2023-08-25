@@ -2,5 +2,6 @@ version: '3'
 
 services:
   app: 
-    image: oscaragudelo/fastnote-front:dev
-    command: npm run build
+    image: oscaragudelo/fastnote-front:prod
+    ports:
+      - 3000:3000
