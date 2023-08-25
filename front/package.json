@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "docker compose -f docker-compose.dev.yml up --build",
-    "local-dev": "vite ./src --host 0.0.0.0",
-    "build": "tsc && vite ./src build",
+    "docker-dev": "docker compose -f docker-compose.local.yml up --build",
+    "dev": "vite",
+    "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite ./src preview"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
