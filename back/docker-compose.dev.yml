@@ -2,7 +2,7 @@ version: "3"
 
 services:
   api:
-    image: oscaragudelo/fastnote-back:dev
+    image: oscaragudelo/fastnote-back-dev
     ports:
       - 5000:5000
     environment:

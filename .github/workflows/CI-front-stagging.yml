@@ -26,9 +26,4 @@ jobs:
           context: "{{defaultContext}}:front"
           file: ./Dockerfile
           push: true
-          tags: oscaragudelo/fastnote-front:dev
-      - name: auto_deploy
-        if: ${{ success() }}
-        uses: joelwmale/webhook-action@2.1.0
-        with:
-          url: "https://ops.fastnote.website/hooks/autodeploydev"
+          tags: oscaragudelo/fastnote-front-dev
