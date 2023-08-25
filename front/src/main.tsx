@@ -14,7 +14,6 @@ import { DATAProvider } from "./DATAContexts.tsx";
 
 const createUrl = () => {
   let URI;
-  console.log(window.location.href)
   if (window.location.href.includes("dev.fastnote")) {
     URI = "https://api.dev.fastnote.website/";
   } else if (window.location.href.includes("localhost")) {
