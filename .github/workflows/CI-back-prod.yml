@@ -30,3 +30,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: oscaragudelo/fastnote-back:prod
+      - name: auto_deploy
+        if: ${{ success() }}
+        uses: distributhor/workflow-webhook
+        with:
+          url: "https://ops.fastnote.website/hooks/autodeployprod"
