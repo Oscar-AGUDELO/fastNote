@@ -1,0 +1,41 @@
+.footer {
+  background-color: rgba(52, 58, 85, 1);
+  font-family: "Itim";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.footermenu {
+    color: rgba(174, 243, 218, 1);
+    display: flex;
+    margin: 0;
+    align-items: baseline;
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+.footermenu a {
+    list-style: none;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.footermenu li {
+    display: inline-block;
+    list-style: none;
+}
+
+.footermenu li:not(:last-of-type) {
+    margin: 0 5px;
+}
+
+.footermenu li:last-of-type {
+    margin-left: auto;
+}
+.footermenu p {
+   margin-right: 3rem;
+}

@@ -1,0 +1,10 @@
+{
+  "signupNotificationMessage": "Votre compte a bien été créé ! 😊",
+  "signupNotificationTextButton": "Continuer",
+  "loginNotificationMessage": "Bienvenu de nouveau ! 🎉",
+  "loginNotificationTextButton": "Continuer",
+  "loginNotificationErrorMessage": "Il y a un problème avec votre compte",
+  "loginNotificationTextErrorButton": "Réessayer",
+  "purchaseProcesNotificationMessage": "Ups, il y a un problème, certains produits ne sont plus disponibles, désolé 😬",
+  "purchaseProcesNotificationTextButton": "Retour"
+}
