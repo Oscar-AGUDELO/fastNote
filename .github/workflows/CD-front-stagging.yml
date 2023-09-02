@@ -13,9 +13,9 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: run tests back
-        run: cd back/ && npm i && npm test
-      - name: Cancelling parallel jobs
+      - name: Run tests front
+        run: cd front/ && npm i && npm test
+      - name: Cancelling if test fails
         if: failure()
         uses: andymckay/cancel-action@0.2
       - name: Set up QEMU
