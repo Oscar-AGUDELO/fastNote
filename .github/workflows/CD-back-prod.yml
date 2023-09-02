@@ -1,16 +1,23 @@
-name: back-dev
+name: back-prod
 
 on:
   push:
     paths:
       - "back/**"
     branches:
-      - "dev"
+      - "main"
 
 jobs:
   docker-back:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: run tests back
+        run: cd back/ && npm i && npm test
+      - name: Cancelling parallel jobs
+        if: failure()
+        uses: andymckay/cancel-action@0.2
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -29,4 +36,4 @@ jobs:
           context: "{{defaultContext}}:back"
           file: ./Dockerfile
           push: true
-          tags: oscaragudelo/fastnote-back-dev
+          tags: oscaragudelo/fastnote-back

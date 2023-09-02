@@ -10,6 +10,7 @@ import {
 } from "../graphql/gql";
 import { DATAContext } from "../DATAContexts";
 import { useDebounce } from "../services/useDebounce";
+import { NoteForm } from "../components/noteForm";
 
 export const Note = () => {
   const { refetchUser } = useContext(DATAContext);
@@ -114,56 +115,14 @@ export const Note = () => {
       onSaveModifyNote();
     }
   }, [debouncedTitle, debouncedContent]);
+
   return (
     note && (
-      <div>
-        <form>
-          <p>
-            <label>
-              Title
-              <br />
-              <input
-                disabled={note.deleted ? true : false}
-                type="text"
-                value={noteForm.title}
-                onChange={(e) =>
-                  setNoteForm({ ...noteForm, title: e.target.value })
-                }
-              />
-            </label>
-          </p>
-          <p>
-            <label>Content</label>
-            <br />
-            <textarea
-              disabled={note.deleted ? true : false}
-              rows={10}
-              cols={30}
-              value={noteForm.content}
-              onChange={(e) =>
-                setNoteForm({ ...noteForm, content: e.target.value })
-              }
-            />
-          </p>
-        </form>
-        {note.deleted ? (
-          <button
-            onClick={async () => {
-              onRestore(note.id);
-            }}
-          >
-            Restore
-          </button>
-        ) : (
-          <button
-            onClick={async () => {
-              onDelete(note.id);
-            }}
-          >
-            Delete
-          </button>
-        )}
-      </div>
+      < NoteForm note={note}
+        noteForm={noteForm}
+        setNoteForm={setNoteForm}
+        onRestore={onRestore}
+        onDelete={onDelete} />
     )
   );
 };
