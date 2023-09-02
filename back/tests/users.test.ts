@@ -13,7 +13,6 @@ let schema: GraphQLSchema;
 beforeAll(async () => {
   // connect to DB
   await datasource.initialize();
-
   // purge DB
   try {
     const entities = datasource.entityMetadatas;
@@ -25,7 +24,6 @@ beforeAll(async () => {
   } catch (error) {
     throw new Error(`ERROR: Cleaning test database : ${JSON.stringify(error)}`);
   }
-
   // compute GraphQL schema
   schema = await buildSchema({
     resolvers: [UserResolver, NoteResolver],
@@ -85,12 +83,10 @@ describe("users", () => {
           },
         },
       });
-
       expect(result.data?.signin).toBeTruthy();
       expect(typeof result.data?.signin).toBe("string");
       userToken = result.data.signin;
     });
-
     it("returns current logged user", async () => {
       const result = await graphql({
         schema,
@@ -99,9 +95,8 @@ describe("users", () => {
           token: userToken,
         },
       });
-
       expect(result.data?.me).toBeTruthy();
-      expect(result.data.me.email).toBe("toto@test.scom");
+      expect(result.data.me.email).toBe("toto@test.com");
     });
   });
 });
