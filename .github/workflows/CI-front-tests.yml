@@ -1,0 +1,15 @@
+name: front-tests
+
+on:
+  push:
+    paths:
+      - "front/**"
+
+jobs:
+  test-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: run tests front
+        run: cd front/ && npm i && npm test
