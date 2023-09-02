@@ -11,6 +11,13 @@ jobs:
   docker-back:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Run tests back
+        run: cd back/ && npm i && npm test
+      - name: Cancelling if test fails
+        if: failure()
+        uses: andymckay/cancel-action@0.2
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx

@@ -1,9 +1,12 @@
-name: front-tests
+name: front-test-PR
 
 on:
-  push:
+  pull_request:
     paths:
       - "front/**"
+    branches:
+      - "dev"
+      - "main"
 
 jobs:
   test-client:
@@ -11,5 +14,5 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: run tests front
+      - name: Run tests front
         run: cd front/ && npm i && npm test
