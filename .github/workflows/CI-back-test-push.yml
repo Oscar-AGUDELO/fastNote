@@ -15,4 +15,4 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run tests back
-        run: cd back/ && npm i && npm test
+        run: cd back/ && npm run docker-ci

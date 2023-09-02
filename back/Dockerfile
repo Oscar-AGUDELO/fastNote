@@ -7,7 +7,8 @@ COPY package-lock.json package-lock.json
 RUN npm i
 
 COPY src src
-COPY test test
+COPY tests tests
+COPY jest.config.js jest.config.js
 COPY tsconfig.json tsconfig.json
 COPY nodemon.json nodemon.json
 
