@@ -1,9 +1,12 @@
-name: front-tests
+name: front-tests-push
 
 on:
-  push:
+  pull_request:
     paths:
-      - "front/**"
+      - "front/**" 
+    branches-ignore:    
+      - "dev"
+      - "main"
 
 jobs:
   test-client:
