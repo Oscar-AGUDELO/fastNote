@@ -101,7 +101,7 @@ describe("users", () => {
       });
 
       expect(result.data?.me).toBeTruthy();
-      expect(result.data.me.email).toBe("toto@test.com");
+      expect(result.data.me.email).toBe("toto@test.scom");
     });
   });
 });
