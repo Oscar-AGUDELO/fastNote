@@ -1,7 +1,7 @@
 name: front-tests
 
 on:
-  pull_request:
+  push:
     paths:
       - "front/**"
 
