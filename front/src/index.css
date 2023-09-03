@@ -9,7 +9,7 @@
 
 :root {
   --red: #C74944;
-  --grey: #e6e6e6;
+  --grey: #cccccc;
 }
 
 body {
@@ -47,11 +47,11 @@ a:hover {
 }
 
 
-input {
+input, textarea {
   border-radius: 4px;
   border: 1px solid black;
   background-color: var(--grey);
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 0 0.6rem 0.5rem;
   width: 100%;
 }
 
