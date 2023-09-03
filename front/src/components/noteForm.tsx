@@ -26,7 +26,8 @@ export const NoteForm = ({
       <div style={style.container}>
         {saved && <span style={style.saved}>Sauvegarder...</span>}
 
-        <div style={style.header}><h1 style={style.title}>{note.deleted ? 'Corbeille >' : 'Toutes les notes >'}{' '}{note.title}</h1>
+        <div style={style.header}><h1
+          data-testid="note.title" style={style.title}>{note.deleted ? 'Corbeille >' : 'Toutes les notes >'}{' '}{note.title}</h1>
           {!editNote && !note.deleted &&
             <button style={style.button} title='Modifier'
               onClick={async () => {
@@ -57,7 +58,6 @@ export const NoteForm = ({
           {editNote && <input style={style.inputTitle}
             readOnly={!editNote}
             placeholder="Titre"
-            data-testid="note.title"
             disabled={note.deleted ? true : false}
             type="text"
             value={noteForm.title}

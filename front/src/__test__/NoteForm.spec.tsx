@@ -24,7 +24,7 @@ test("render and display note", async () => {
     />
   );
 
-  expect(screen.getByTestId("note.title")).toHaveValue("Title Test");
+  expect(screen.getByTestId("note.title")).toHaveTextContent("Title Test");
   expect(screen.getByTestId("note.content")).toHaveValue("Content Test");
 });
 
