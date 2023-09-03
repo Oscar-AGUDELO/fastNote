@@ -24,44 +24,44 @@ export default function Nav({ children }: { children?: React.ReactNode }) {
       )}
       {((burger && screenMode === "vertical") ||
         (!burger && screenMode === "horizontal")) && (
-        <div>
-          <h1>
+          <div>
+            <h1>
+              <p>
+                <Link onClick={() => setBurger(false)} to="/">
+                  Home
+                </Link>
+              </p>
+            </h1>
             <p>
-              <Link onClick={() => setBurger(false)} to="/">
-                Home
+              <Link onClick={() => setBurger(false)} to="/new">
+                New
               </Link>
             </p>
-          </h1>
-          <p>
-            <Link onClick={() => setBurger(false)} to="/new">
-              New
-            </Link>
-          </p>
-          <p>
-            <Link onClick={() => setBurger(false)} to="/notes">
-              Notes
-            </Link>
-          </p>
-          <p>
-            <Link onClick={() => setBurger(false)} to="/trash">
-              Trash
-            </Link>
-          </p>
-          <p>
-            <button
-              onClick={() => {
-                localStorage.removeItem("token");
-                refetchUser();
-              }}
-            >
-              Logout
-            </button>
-          </p>
-        </div>
-      )}
-      {!burger && <div>{children}</div>}
+            <p>
+              <Link onClick={() => setBurger(false)} to="/notes">
+                Notes
+              </Link>
+            </p>
+            <p>
+              <Link onClick={() => setBurger(false)} to="/trash">
+                Trash
+              </Link>
+            </p>
+            <p>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  refetchUser();
+                }}
+              >
+                Logout
+              </button>
+            </p>
+          </div>
+        )}
+      {!burger && children}
     </div>
   ) : (
-    <div>{children}</div>
+    children
   );
 }

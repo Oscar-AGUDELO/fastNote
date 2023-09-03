@@ -1,8 +1,10 @@
-import { useContext, useState } from "react";
-import { createUser, signin } from "../graphql/gql";
-import { useMutation } from "@apollo/client";
-import { DATAContext } from "../DATAContexts";
-import eye from "../assets/images/oeil.png";
+import { useContext, useState } from 'react';
+import { createUser, signin } from '../graphql/gql';
+import { useMutation } from '@apollo/client';
+import { DATAContext } from '../DATAContexts';
+import eye from '../assets/images/oeil.png';
+import logo from '../assets/logo.svg';
+import { IStyles } from '../interfaces';
 
 export const Account = () => {
   const { refetchUser } = useContext(DATAContext);
@@ -10,13 +12,13 @@ export const Account = () => {
 
   const onTokenChange = async (token: string) => {
     if (token) {
-      localStorage.setItem("token", token);
+      localStorage.setItem('token', token);
       await refetchUser();
     }
   };
   const [seePassword, setSeePassword] = useState(false);
-  const [email, setEmail] = useState("oscar.agudelo.pro@gmail.com");
-  const [password, setPassword] = useState("23042015");
+  const [email, setEmail] = useState('oscar.agudelo.pro@gmail.com');
+  const [password, setPassword] = useState('23042015');
 
   const [doLoginMutation] = useMutation(signin);
   async function doLogin(event: { preventDefault: () => void }) {
@@ -26,18 +28,18 @@ export const Account = () => {
         variables: {
           data: {
             email: email,
-            password: password,
-          },
-        },
+            password: password
+          }
+        }
       });
       if (data.signin) {
         await onTokenChange(data.signin);
       } else {
-        setEmail("");
-        setPassword("");
+        setEmail('');
+        setPassword('');
       }
     } catch {
-      console.log("catch");
+      console.log('catch');
     }
   }
 
@@ -49,66 +51,152 @@ export const Account = () => {
         variables: {
           data: {
             email: email,
-            password: password,
-          },
-        },
+            password: password
+          }
+        }
       });
       if (data.createUser) {
         await onTokenChange(data.createUser);
       } else {
-        setEmail("");
-        setPassword("");
+        setEmail('');
+        setPassword('');
       }
     } catch {
-      console.log("catch");
+      console.log('catch');
     }
   }
 
   return (
-    <div>
-      <h1>{view ? "Login" : "Signup"}</h1>
-      <div className="loginContainer">
-        <form onSubmit={view ? doLogin : doSignup} className="loginForm">
-          <p>E-mail*</p>
-          <input
-            className="loginFormField"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <p>Mot de passe*</p>
-          <div className="loginFormPasswordContainer">
+    <div style={style.container}>
+      <img style={style.logo} src={logo} />
+      <div style={style.content}>
+        {view && (
+          <div style={style.titleContainer}>
+            <h1 style={style.title}>Nouveau fast</h1>
+            <h1 style={style.title2}>Compte</h1>
+          </div>
+        )}
+        <form style={style.formContainer} onSubmit={view ? doSignup : doLogin}>
+          <p style={style.labelForm}>E-mail</p>
+          <div style={style.inputContainer}>
             <input
-              className="loginFormField"
-              type={seePassword ? "text" : "password"}
+              style={style.inputForm}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <p style={style.labelForm}>Mot de passe</p>
+          <div style={style.inputContainer}>
+            <input
+              style={style.inputForm}
+              type={seePassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <img
-              className="loginFormEyeIcon"
+              style={style.passwordIcon}
               onMouseEnter={() => setSeePassword(true)}
               onMouseLeave={() => setSeePassword(false)}
               src={eye}
               alt="eye"
             />
           </div>
-          <div className="loginFormSubmitContainer">
+          <div style={style.buttonContainer}>
             <input
-              className="loginFormSubmit"
+              style={style.containerContain}
               type="submit"
-              value={view ? "Se connecter" : "Créer mon compte"}
+              value={view ? 'Créer mon compte' : 'Se connecter'}
             />
           </div>
         </form>
-        <div>
-          <p>Pas encore de compte ?</p>
+        <div style={style.buttonContainer}>
           {view ? (
-            <button onClick={() => setView(false)}>S'inscrire</button>
+            <button style={style.changeButton} onClick={() => setView(false)}>
+              <h1 style={style.title}>Déjà un fast</h1>
+              <h1 style={style.title2}>Compte</h1>
+              <h1 style={style.title}>{' '}?</h1>
+            </button>
           ) : (
-            <button onClick={() => setView(true)}>Se Connecter</button>
+            <button style={style.changeButton} onClick={() => setView(true)}>
+              <h1 style={style.title}>Créer un fast</h1>
+              <h1 style={style.title2}>Compte</h1>
+            </button>
           )}
         </div>
       </div>
     </div>
   );
+};
+
+const style: IStyles = {
+  container: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%'
+  },
+  logo: { width: 'initial', paddingBottom: '5rem' },
+  content: {
+    width: '320px',
+    borderRadius: '4px',
+    border: '1px var(--grey) solid',
+    padding: '2rem',
+    boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.44)'
+  },
+  titleContainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '2rem'
+  },
+  title: {
+    fontSize: '1.5rem',
+    margin: '0'
+  },
+  title2: {
+    margin: '0',
+    fontSize: '1.5rem',
+    fontFamily: 'Pacifico',
+    color: 'var(--red)'
+  },
+  formContainer: {
+    width: '100%'
+  },
+  labelForm: {
+    margin: '0'
+  },
+  inputForm: {
+    margin: '0 0 2rem 0'
+  },
+  inputContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    position: 'relative'
+  },
+  passwordIcon: {
+    width: '30px',
+    height: '30px',
+    position: 'absolute',
+    right: '10px',
+    top: '5px',
+    backgroundColor: 'var(--grey)',
+    cursor: 'pointer'
+  },
+  buttonContainer: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  changeButton: {
+    backgroundColor: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '2rem'
+  }
 };
