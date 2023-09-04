@@ -1,0 +1,10 @@
+{
+    "name": "fastNote",
+    "icons": [
+      {
+        "src": "logo.png",
+        "type": "image/svg",
+        "sizes": "300x300"
+      }
+    ]
+  }

@@ -7,7 +7,7 @@ import restoreGrey from '../assets/images/restoreGrey.svg';
 import { IStyles } from "../interfaces";
 
 export const Trash = () => {
-  const { user, refetchUser } = useContext(DATAContext);
+  const { user, refetchUser, screenMode } = useContext(DATAContext);
   const notes = user?.notes.filter((x) => x.deleted);
 
   const [restoreNote] = useMutation(doRestoreNote);
@@ -30,13 +30,12 @@ export const Trash = () => {
   };
 
   const [onHover, setOnHover] = useState('')
-  console.log(notes && notes[0].deleted && new Date(notes && notes[0].deleted as Date)?.getDate())
   return (
     notes && (
-      <div style={style.container}>
-        <h1 style={style.title}>Toutes les notes</h1>
+      <div style={screenMode === 'horizontal' ? style.container : style.containerMobile}>
+        <h1 style={style.title}>Corbeille</h1>
         <div style={style.content}>
-          {notes.map((note) => (
+          {screenMode === 'horizontal' && notes.map((note) => (
             <div style={onHover === note.id ? style.noteHover : style.note} key={note.id} onMouseEnter={() => setOnHover(note.id)} onMouseLeave={() => setOnHover('')}>
               <Link
                 style={style.link} to={`/note/${note.id}`}>
@@ -57,6 +56,15 @@ export const Trash = () => {
             </div>
           ))
           }
+          {screenMode === 'vertical' && notes.map((note) => (
+            <div style={style.noteMobile} key={note.id} >
+              <Link
+                style={style.link} to={`/note/${note.id}`}>
+                {note.title}
+              </Link>
+            </div>
+          ))
+          }
         </div>
       </div >
     )
@@ -68,9 +76,14 @@ const style: IStyles = {
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
-    marginLeft: '2rem',
-    marginRight: '2rem'
+    height: '100%'
+  },
+  containerMobile: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: '100%'
   },
   title: {
     fontSize: '2rem',
@@ -82,6 +95,12 @@ const style: IStyles = {
     flexDirection: 'column'
   },
   note: {
+    width: '100%',
+    height: '35px',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  noteMobile: {
     width: '100%',
     height: '35px',
     display: 'flex',

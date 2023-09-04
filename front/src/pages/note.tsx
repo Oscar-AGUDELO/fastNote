@@ -13,7 +13,7 @@ import { useDebounce } from '../services/useDebounce';
 import { NoteForm } from '../components/noteForm';
 
 export const Note = () => {
-  const { refetchUser } = useContext(DATAContext);
+  const { refetchUser, screenMode } = useContext(DATAContext);
   const { noteId } = useParams();
   const navigate = useNavigate();
   const [noteForm, setNoteForm] = useState<INoteInput>({
@@ -123,6 +123,7 @@ export const Note = () => {
   return (
     note && (
       <NoteForm
+        screenMode={screenMode}
         saved={saved}
         note={note}
         noteForm={noteForm}
