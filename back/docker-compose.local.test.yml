@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  api-test:
+    build: ./
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+    environment:
+      - DB_HOST=db
+      - TOKEN_PASS=TopitoToken7.
+      - DB_PASS=TopitoDb7.
+      - DB_NAME=fastNoteDb
+    command: npm run test ./tests ${JEST_OPTIONS}
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: fastNoteDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: TopitoDb7.

@@ -7,12 +7,8 @@ import {
   Authorized,
   Ctx,
 } from "type-graphql";
-import { User, UserData, UserSignin } from "../entities/userEntity";
 import datasource from "../services/datasource";
-import { hash, verify } from "argon2";
-import { sign } from "jsonwebtoken";
 import { IContext } from "../services/auth";
-import { IResponse, objectTypeResponse } from "../utils/interfaces";
 import { Note, NoteInput } from "../entities/noteEntity";
 
 @Resolver()

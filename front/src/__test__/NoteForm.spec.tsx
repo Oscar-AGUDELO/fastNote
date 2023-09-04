@@ -5,6 +5,8 @@ import { NoteForm } from "../components/noteForm";
 test("render and display note", async () => {
   render(
     <NoteForm
+      screenMode='horizontal'
+      saved={false}
       onDelete={() => { }}
       note={{
         title: "Title Test",
@@ -23,7 +25,7 @@ test("render and display note", async () => {
     />
   );
 
-  expect(screen.getByTestId("note.title")).toHaveValue("Title Test");
+  expect(screen.getByTestId("note.title")).toHaveTextContent("Title Test");
   expect(screen.getByTestId("note.content")).toHaveValue("Content Test");
 });
 
@@ -32,6 +34,8 @@ test("render a deletable comment", async () => {
   const onDelete = jest.fn();
   render(
     <NoteForm
+      screenMode='horizontal'
+      saved={false}
       onDelete={onDelete}
       note={{
         title: "Title Test",

@@ -1,4 +1,4 @@
-import "./App.css";
+import "./index.css"
 import {
   Route,
   BrowserRouter as Router,
@@ -16,7 +16,6 @@ import { DATAContext } from "./DATAContexts";
 import { useContext, useEffect, useState } from "react";
 import { Account } from "./pages/account";
 import { NotFound } from "./pages/notFound";
-
 export const App = () => {
   return (
     <Router>
