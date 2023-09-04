@@ -5,6 +5,7 @@ import { NoteForm } from "../components/noteForm";
 test("render and display note", async () => {
   render(
     <NoteForm
+      screenMode='horizontal'
       saved={false}
       onDelete={() => { }}
       note={{
@@ -33,6 +34,7 @@ test("render a deletable comment", async () => {
   const onDelete = jest.fn();
   render(
     <NoteForm
+      screenMode='horizontal'
       saved={false}
       onDelete={onDelete}
       note={{

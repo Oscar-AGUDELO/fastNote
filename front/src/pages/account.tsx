@@ -7,7 +7,7 @@ import logo from '../assets/logo.svg';
 import { IStyles } from '../interfaces';
 
 export const Account = () => {
-  const { refetchUser } = useContext(DATAContext);
+  const { refetchUser, screenMode } = useContext(DATAContext);
   const [view, setView] = useState(true); // true = login, false = signup
 
   const onTokenChange = async (token: string) => {
@@ -69,7 +69,7 @@ export const Account = () => {
   return (
     <div style={style.container}>
       <img style={style.logo} src={logo} />
-      <div style={style.content}>
+      <div style={screenMode === 'horizontal' ? style.content : style.contentMobile}>
         {view && (
           <div style={style.titleContainer}>
             <h1 style={style.title}>Nouveau fast</h1>
@@ -145,6 +145,10 @@ const style: IStyles = {
     border: '1px var(--grey) solid',
     padding: '2rem',
     boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.44)'
+  },
+  contentMobile: {
+    minWidth: '320px',
+    padding: '1rem'
   },
   titleContainer: {
     width: '100%',
