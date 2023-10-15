@@ -186,7 +186,6 @@ const style: IStyles = {
     border: 'none',
     display: 'flex',
     alignItems: 'center',
-    cursor: 'help',
     position: 'absolute',
     right: '10px',
     top: '2rem'
